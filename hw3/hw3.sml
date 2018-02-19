@@ -98,7 +98,6 @@ fun check_pat pat =
 	in distinct(extract_str(pat, []))
 	end
 
-
 (* #11 *)
 fun match (valu, pat) =
 	case (valu, pat) of
@@ -117,15 +116,4 @@ fun match (valu, pat) =
 fun first_match valu pl = 
 	SOME (first_answer (fn x => match (valu, x)) pl)
 	handle NoAnswer => NONE
-
-
-
-
-
-
-
-
-
-
-
 
