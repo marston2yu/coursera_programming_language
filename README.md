@@ -58,7 +58,7 @@ Important concepts including:
 
 - ML reference
 
-- Callback	
+	 Callback	
 
 ## Section 4
 
@@ -84,3 +84,29 @@ Important concepts including:
 - **Stream**
 - **Memoization**
 - Introduction to micro
+
+## Section 6
+
+Important concepts including:
+
+- Racket struct
+
+- Workflow for a language implementation: 
+
+  concrete syntax ==[parser]==> abstract-syntax tree (AST) ==[type-checker]==>give error messages ==[interpreter or compiler]==>language B
+
+- Assume giving a legal AST.
+
+  > Personnal understanding:  need to type-check new types that we defined in new language B with language A, but we can ignore type mismatch errors in language A.
+
+- Implement variable environment: store variable-value pair and look up value by variable name.
+
+- Implement function closure: call (e1, e2)
+
+  -  Evaluate **e1** in the current environment to get a **closure** 
+  - Evaluate **e2** in the current environment to get  the **argument** to the closure.
+  - Evaluate the body of the **code part** of the closure using the **environment part** of the closure extended with the argument of the code part mapping to the argument at the call-site.
+
+- Metalanguage as "Macros"
+
+  ​
