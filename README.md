@@ -109,4 +109,28 @@ Important concepts including:
 
 - Metalanguage as "Macros"
 
-  ​
+## Section 7
+
+Important concepts including:
+
+- **Soundness, Completeness, Undecidability**
+   1. soundness prevents false negatives.
+   2. completeness prevents false positives.
+   3.  it is impossible to implement a static checker that given any program in your language (a) always terminates, (b) is sound, and (c) is complete.
+- Weak typing
+- Eval and quote
+
+## Section 8
+
+This section turns to **Ruby**. 
+
+Important concepts including:
+
+- Visibility and Getters/Setters
+- Dynamic class definition
+- **Duck typing**
+- **Arrays, Hashes and Ranges**
+- **Blocks**
+- The **Proc** class acts as closure
+- **Subclassing and Inheritance**
+- **Overriding and Dynamic dispatch**
