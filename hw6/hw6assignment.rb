@@ -5,7 +5,7 @@
 
 class MyPiece < Piece
   # The constant All_My_Pieces should be declared here
-  All_Pieces = [[[[0, 0], [1, 0], [0, 1], [1, 1]]],  # square (only needs one)
+  All_My_Pieces = [[[[0, 0], [1, 0], [0, 1], [1, 1]]],  # square (only needs one)
                 rotations([[0, 0], [-1, 0], [1, 0], [0, -1]]), # T
                 [[[0, 0], [-1, 0], [1, 0], [2, 0]], # long 4 (only needs two)
                  [[0, 0], [0, -1], [0, 1], [0, 2]]],
@@ -25,8 +25,12 @@ class MyPiece < Piece
     @all_rotations[@rotation_index].length
   end
 
-  def self.next_piece (board)
-      MyPiece.new(All_Pieces.sample, board)
+  def self.next_piece (board, cheat = false)
+    if cheat
+      MyPiece.new([[[0, 0]]], board) # Make a cheat block.
+    else
+      MyPiece.new(All_My_Pieces.sample, board)
+    end
   end
 end
 
@@ -36,31 +40,38 @@ class MyBoard < Board
   def initialize (game)
     super
     @current_block = MyPiece.next_piece(self)
+    @cheat_status = false # Flag of cheat status.
   end
 
-  def rotate_180
+  def rotate_180 # Rotate 180 degrees equal normally rotate twice.
     self.rotate_counter_clockwise
     self.rotate_counter_clockwise
     self.draw
   end
 
+  def cheat # Change the cheat flag iif score >= 100 and cheat flag is false to prevent
+            # subtract multiple times.
+    if (score >= 100) && !@cheat_status
+      @cheat_status = true
+      @score = score - 100
+    end
+  end
+
   # gets the next piece
   def next_piece
-    if block_given?
-      @current_block = MyPiece.next_piece(self) {}
+    if @cheat_status
+      @current_block = MyPiece.next_piece(self, true)
+      @cheat_status = false # Reset cheat flag after cheat piece appears.
     else
       @current_block = MyPiece.next_piece(self)
     end
     @current_pos = nil
   end
 
-  # gets the information from the current piece about where it is and uses this
-  # to store the piece on the board itself.  Then calls remove_filled.
-  # modify to adapt different block size.
   def store_current
     locations = @current_block.current_rotation
     displacement = @current_block.position
-    (0..@current_block.current_size-1).each{|index|
+    (0..@current_block.current_size-1).each{|index| # modify to adapt different block size.
       current = locations[index];
       @grid[current[1]+displacement[1]][current[0]+displacement[0]] =
           @current_pos[index]
