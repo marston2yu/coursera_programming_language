@@ -5,19 +5,11 @@
 
 class MyPiece < Piece
   # The constant All_My_Pieces should be declared here
-  All_My_Pieces = [[[[0, 0], [1, 0], [0, 1], [1, 1]]],  # square (only needs one)
-                rotations([[0, 0], [-1, 0], [1, 0], [0, -1]]), # T
-                [[[0, 0], [-1, 0], [1, 0], [2, 0]], # long 4 (only needs two)
-                 [[0, 0], [0, -1], [0, 1], [0, 2]]],
-                rotations([[0, 0], [0, -1], [0, 1], [1, 1]]), # L
-                rotations([[0, 0], [0, -1], [0, 1], [-1, 1]]), # inverted L
-                rotations([[0, 0], [-1, 0], [0, -1], [1, -1]]), # S
-                rotations([[0, 0], [1, 0], [0, -1], [-1, -1]]), # Z
-                rotations([[0, 0], [-1, 0], [1, 0], [0, -1], [1, -1]]), # @@
-                                                                        # @@@
+  All_My_Pieces = [rotations([[0, 0], [-1, 0], [1, 0], [0, -1], [1, -1]]), # @@
+                                                                           # @@@
                 [[[0, 0], [-1, 0], [1, 0], [2, 0], [-2, 0]], # long 5 (only needs two)
                  [[0, 0], [0, -1], [0, 1], [0, 2], [0, -2]]],
-                rotations([[0, 0], [-1, 0], [0, -1]])] # small L
+                rotations([[0, 0], [-1, 0], [0, -1]])] + All_Pieces # small L
   # your enhancements here
 
   # block size
