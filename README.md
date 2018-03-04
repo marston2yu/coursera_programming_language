@@ -134,3 +134,12 @@ Important concepts including:
 - The **Proc** class acts as closure
 - **Subclassing and Inheritance**
 - **Overriding and Dynamic dispatch**
+
+## Section 9
+
+Important concepts including:
+
+- OOP versus Functional Decomposition
+- Binary Methods With Functional Decomposition
+- Binary Methods With OOP
+- Multiple inherentance and Mixins
